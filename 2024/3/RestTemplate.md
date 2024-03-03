@@ -80,3 +80,29 @@ ResponseEntity<List<ItemDTO>> response = restTemplate.exchange(
 new ParameterizedTypeReference<List<ItemDTO>>() {
 }
 ```
+
+
+
+## 远程服务调用时存在的问题
+
+一个服务可能部署多份，多个实例同时启动（如同一个`item-service`占用端口`8081`，`8082`，`8083`等），实现负载均衡；在实现代码时请求地址如果是写死的，那么就不能实现负载均衡的效果。
+
+这种问题的解决统一称之为**服务治理**。
+
+需要使用到**注册中心**
+
+
+
+## 注册中心原理
+
+服务调用者(`cart-service`)和服务提供者(`item-service`)。
+
+注册中心：1.注册服务信息，ip是什么，端口是什么，你能提供什么服务。2.注册表：记录服务信息。3.订阅item-service的信息。
+
+所有服务不仅仅是需要注册到注册中心，还需要一个心跳续约，隔一段时间向注册中心报告服务仍可使用，超时后会将该服务从服务列表中剔除掉，同时会给服务调用者推送变更。
+
+![download_image](imgs/download_image.jpeg)
+
+
+
+Nacos是目前国内企业中占比最多的注册组件之一。
