@@ -38,7 +38,7 @@ SpringBoot的自动配置是通过@EnableAutoConfiguration注解来实现的。@
 
 1. 编写自动配置类，使用Conditional相关注解实现条件化配置。
 2. 配置`spring.factories`，通常是在`resouce/META-INF/spring.factories`文件下自动配置类。
-3. 打包成一个jar包，进行发布、
+3. 打包成一个jar包，进行发布。
 
 **使用就通过如下的方式进行使用：**
 
@@ -54,7 +54,7 @@ SpringBoot的自动配置是通过@EnableAutoConfiguration注解来实现的。@
 
 ## 5、spirngboot什么场景下注解会失效？
 
-Maven仓库冲突、未引入Maven依赖、条件注解不满足、包扫描路径错误、	Bean覆盖问题、异步处理问题。
+Maven仓库冲突、未引入Maven依赖、条件注解不满足、包扫描路径错误、Bean覆盖问题、异步处理问题。
 
 ## 6、@transactional注解什么情况下会失效？
 
